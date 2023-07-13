@@ -5,11 +5,16 @@
 
 
 ## 🎇code review
+<br />
 
 - **vue에서 route 하기**
-  vue router 설치<br />
-  vue router에서 옵션으로 history와 hash를 지정 가능, 기본은 hash 모드<br />
-  ```
+
+``` route 생성 및 페이지 구성 > route가 영향을 미칠 범위지정 app.use(router) > 페이지 보일 outlet  <router-view> > <router-link to="/"> ```
+
+  <br />
+  vue raute 설치 -> vue router에서 옵션으로 history와 hash를 지정 가능, 기본은 hash 모드<br />
+  
+```
   *createWebHashHistory()
    url이 바뀌면 페이지 전체 리소스 로딩 없이 이동한다.
    url 앞에 #을 사용해서 페이지를 식별해 라우팅을 처리하는 방식, 기본 설정이다!
@@ -27,13 +32,13 @@
    포괄적인 대체 경로를 추가하면 문제 해결 가능 
 
 
-  -> hash와 history의 가장 큰 차이점은 페이지 이동 시 리소스 로딩의 하나?, url로 서버에 post 요청의 하나?인 듯 하다 
-  ```
+  -> hash와 history의 가장 큰 차이점 : 페이지 이동 시 리소스 로딩의 유무, url로 서버에 post 요청의 유무 인 듯 하다 
+```
 
-  별도로 router directory 만들어서 index.js 파일 만듦<br />
   
 ```ruby
 //index.js file
+
 import HomeView from "@/views/HomeView.vue";
 import AboutView from "@/views/AboutView.vue";
 import PortfolioView from "@/views/PortfolioView.vue";
@@ -41,7 +46,7 @@ import ProjectView from "@/views/ProjectView.vue";
 import GalleryView from "@/views/GalleryView.vue";
 import { createRouter, createWebHashHistory } from "vue-router";
 
-const routes = [
+const routes = [ 
   { path: "/", component: HomeView },
   { path: "/about", component: AboutView },
   { path: "/portfolio", component: PortfolioView },
@@ -49,16 +54,42 @@ const routes = [
   { path: "/gallery", component: GalleryView },
 ];
 
-const router = createRouter({
+const router = createRouter({ //route 생성
   history: createWebHashHistory("/"), 
   routes,
 });
 
 
-
 export default router;
+```
 
+main.js : route를 프로젝트 전체에 적용하기 위해 app을 랜더링하는 main.js에 적용 <br />
+provider 역할을 하는  app.use(router)
 
+```ruby
+import router from "./router";
 
+app.use(router);
+app.mount("#app")
+```
 
+app.js에 공통 ui인 header와 Outlet의 역할을 하는 컴포넌트 넣기
+```ruby
+<template>
+  <v-app>
+    <TheHeader />
+    <TheView />
+  </v-app>
+</template>
+```
+
+TheView.vue
+```ruby
+<template>
+  <div>
+    <router-view></router-view> //react의 <outlet>
+  </div>
+</template>
+
+//링크 걸면 끝!
 ```
