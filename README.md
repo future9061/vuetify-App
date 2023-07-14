@@ -133,7 +133,7 @@ TheView.vue
 이 코드에서 이상한 점 : IsAction이 true면 모달이 열리고 false면 모달이 닫히는 로직인데, close버튼에 false는 명시돼있지만 true가 명시된 부분이 없었다.
 close 버튼에서 isActive에 false를 대입할 때 value를 쓰는 걸 보니 isActive는 v-bind에 저장된 데이터 인 것 같았고,
 <v-btn v-bind="props">코드가 true를 넘겨주는 부분인 것 같다.
-나는 v-btn의 기본 속성을v-slot:activator="{props}"로 넘길 때a action을 넘겨준다길래 당연히 click을 넘기는 걸로 생각했다.
+나는 v-btn의 기본 속성을v-slot:activator="{props}"로 넘길 때 activator는 사용자의 action을 받는 속성이기에 당연히 click 이벤트를 넘기는 걸로 생각했다.
 뭐가 진짜인지는 나중에..
 ```
 
