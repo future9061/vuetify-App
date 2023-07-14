@@ -131,3 +131,9 @@ close 버튼에서 isActive에 false를 대입할 때 value를 쓰는 걸 보니
 나는 v-btn의 기본 속성을 props로 넘길 때 click을 넘기는 걸로 오해했다.
 ```
 
+<br />
+
+- **Tab 기능 만들기**
+
+
+
