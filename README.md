@@ -93,3 +93,41 @@ TheView.vue
 
 //링크 걸면 끝!
 ```
+
+<br />
+
+- **vuetify로 모달창 만들기**
+
+```ruby
+<v-dialog> //모달창 container
+
+  <template v-slot:activator="{props}"> // v-slot는 v-dialog의 속성, activator는 사용자 액션을 정의.props로 액션 받아올 예정
+    <v-btn v-bind="props"> //activator에 btn 의 기본 속성을 넘겨줌 
+    CONTACT
+    </v-btn>
+  </template>
+  -> 이 부분은 CONTACT 버튼을 클릭 할 시 모달이 열리는 기능이다. activator에 click이 전달되면 모달의 내용을 보여줌.
+
+  <template v-slot:default={"isActive"}> //v-slot:default는 dialog의 내용을 담는 부분. isAction이 true면 내용을 보여준다.                                        
+         <v-card>
+            <v-toolbar title="Opening from the top"></v-toolbar>
+            <v-card-text>
+              <div ">내용</div>
+            </v-card-text>
+         
+            <v-card-actions> //액션은 버튼이나 링크를 감싸는 역할
+                 <v-btn @click="isActive.value = false"
+                 >Close</v-btn>
+            </v-card-actions>
+         </v-card>
+    </template>
+
+</v-dialog>
+```
+```
+이 코드에서 이상한 점 : IsAction이 true면 모달이 열리고 false면 모달이 닫히는 로직인데, close버튼에 false는 명시돼있지만 true가 명시된 부분이 없었다.
+close 버튼에서 isActive에 false를 대입할 때 value를 쓰는 걸 보니 isActive는 v-bind에 저장된 데이터 인 것 같았고,
+<v-btn v-bind="props">코드가 true를 넘겨주는 부분인 것 같다.
+나는 v-btn의 기본 속성을 props로 넘길 때 click을 넘기는 걸로 오해했다.
+```
+
