@@ -9,7 +9,12 @@
 
 - **vue에서 route 하기**
 
-``` route 생성 및 페이지 구성 > route가 영향을 미칠 범위지정 app.use(router) > 페이지 보일 outlet  <router-view> > <router-link to="/"> ```
+```
+1. route 생성 및 페이지 구성 
+2. route가 영향을 미칠 범위지정 app.use(router) (react의 provider의 역할)
+3. 페이지 보일 outlet  <router-view>
+4. 이동할 링크 걸기 <router-link to="/">
+ ```
 
   <br />
   vue raute 설치 -> vue router에서 옵션으로 history와 hash를 지정 가능, 기본은 hash 모드<br />
